@@ -37,7 +37,7 @@
         <p data-l10n-id="community-information">Many open source projects have one set of information for users of the project, and another set of information for prospective contributors. It's essential that you find the contributor-oriented venues so you can be plugged into conversation about the project.</p>
         <p data-l10n-id="information-look">Look for these kinds of things:</p>
         <ul>
-            <li data-l10n-id="information-irc">One or more IRC channels, for chatting</li>
+            <li data-l10n-id="information-irc">One or more IRC channels for chatting</li>
             <li data-l10n-id="information-mailing-list">A developer-oriented email list</li>
             <li data-l10n-id="information-bugtracker">A bug tracker</li>
         </ul>
@@ -63,7 +63,7 @@
         <h2 data-l10n-id="download-stuff">Download the stuff to modify</h2>
         <section class="description">
         <p data-l10n-id="download-vcs">Open source projects usually keep the latest version of their source code in some sort of version control system. In this step, you should find out where the source code is kept and download it onto your computer.</p>
-        <p data-l10n-id="download-different">(Note that different projects have different ways of storing their source code. so this part can get somewhat complex.)</p>
+        <p data-l10n-id="download-different">(Note that different projects have different ways of storing their source code, so this part can get somewhat complex.)</p>
         <p data-l10n-id="download-github">If the project is hosted on Github, you should log into Github and click "fork", then use "git" on your computer to "clone" your new personal copy of the project.</p>
         <p data-l10n-id="download-instructions">Generally, look for instructions by the project for a "clone" or "checkout" command.</p>
         <p data-l10n-id="download-exceptions">Finally, you should know there are a couple of exceptions. First, some projects accept translations via a website, in which case there is nothing to download! That's easy. Second, a small number of projects do not use version control tools. Instead, they periodically release "tarballs." In that case, you'll need to download and extract the "tar" file for the latest version of the software.</p>
@@ -105,30 +105,73 @@
 
         <section class="step">
         <h2 data-l10n-id="edit-code">Edit the code</h2>
-        </section><!-- END .step -->
-
-        <section class="step">
-        <h2 data-l10n-id="prepare-isolate">Isolate + prepare your changes</h2>
+        <section class="description">
+        <p data-l10n-id="edit-look">Look at the code, try to figure out which parts are relevant to the bug. Note that these may be in different files!</p>
+        <p data-l10n-id="edit-change">Change the code in small steps, each time checking the behaviour of the modified program. This way you will understand which part of code controls which behavior.</p>
+        <p data-l10n-id="edit-result">At some point, you will get the desired result, or at least something that looks like it. Now it's time to move on to the next step.</p>
+        </section><!-- END .description -->
         </section><!-- END .step -->
 
         <section class="step">
         <h2 data-l10n-id="test-it">Test it</h2>
+        <section class="description">
+        <p data-l10n-id="test-regression">If there is an automated test suite, check that the program still passes all the tests. If not, you have broken something: go back one step and fix it!</p>
+        <p data-l10n-id="test-new-feature">Check that the program has the desired behavior; if there is a test suite add your tests to it. Do not forget corner cases! Be nasty with your program: it's a good way to avoid to discover bugs later!</p>
+        <p data-l10n-id="test-next">Once a program passes all the tests, it is time to send it out in the world.</p>
+        </section><!-- END .description -->
+        </section><!-- END .step -->
+
+        <section class="step">
+        <h2 data-l10n-id="check-changes">Check your changes</h2>
+        <section class="description">
+        <p data-l10n-id="check-changes-check">Check what you changed. With git, there are multiple ways of doing it, all of them a bit different:</p>
+        <ul>
+            <li data-l10n-id="check-changes-diff"><span class="command">git diff</span> will return a list of the modified lines: the ones that you have added are prefixed with a <span class="command">+</span>, the ones you have deleted are prefixed with a <span class="command">-</span>. If you have changed something on a line, it will return the old line prefixed by <span class="command">-</span> and the new line prefixed by <span class="command">+</span>.</li>
+            <li data-l10n-id="check-changes-status"><span class="command">git status</span> will return a list of the modified files and a list of the new files you may have created.</li>
+        </ul>
+        <p data-l10n-id="check-not-git">If your project does not use git, there should be equivalent commands.</p>
+        <p data-l10n-id="check-changes-small">Don't forget to make your changes as small as possible! This makes it easier (and more precise!) to go back on your steps later.</p>
+        </section><!-- END .description -->
         </section><!-- END .step -->
 
         <section class="step">
         <h2 data-l10n-id="private-feedback">(Optional) Get private feedback before submitting</h2>
+        <section class="description">
+        <p data-l10n-id="private-optional">Feeling insecure? Now it's a good time to ask feedback! Ask someone in person, if you are at an event; or ask on IRC or on the mailing list of the project!</p>
+        </section><!-- END .description -->
         </section><!-- END .step -->
 
         <section class="step">
         <h2 data-l10n-id="share-changes">Share your changes</h2>
+        <section class="description">
+        <p data-l10n-id="share-add">Add your changes to be committed. With git, the process is quite straightforward:</p>
+        <ul>
+            <li data-l10n-id="share-add-filename"><span class="command">git add filename1 filename2 ...</span> will add all the files <span class="command">filename1, filename2...</span>.</li>
+            <li data-l10n-id="share-add-p"><span class="command">git add -p</span> will prompt and ask if you want to include each line you have modified.</li>
+        </ul>
+        <p data-l10n-id="share-commit">Now, with <span class="command">git commit -m "A short message describing your changes"</span> you commit your changes. If you want to add a longer message, you should use <span class="command">git commit</span>: this may send you to a text editor (usually Vim) where you can write a short (less than 50 characters) title for your commit followed by a more detailed description. The basics commands you need for Vim are:</p>
+        <ul>
+            <li data-l10n-id="share-vim-i-esc">To start writing: <span class="command">i</span> (think: insert). To stop writing and enter a command, <span class="command">esc</span>.</li>
+            <li data-l10n-id="share-vim-write-quit">To save what you wrote and exit: <span class="command">:wq</span> (think: command, write, quit). To exit without saving any change (and therefore annulling the commit) <span class="command">:q!</span>.</li>
+        </ul>
+        <p data-l10n-id="share-commit-all-files">If you are certain you want to commit all the files you changed, you can use <span class="command">git commit -a</span> (or <span class="command">git commit -a -m</span> if you want to add a short message).</p>
+        <p data-l10n-id="share-patch-pull">Some projects prefer that you send a pull request, others prefer that you format a patch and attach it to a bug description. Check the page of the project.</p>
+        </section><!-- END .description -->
         </section><!-- END .step -->
 
         <section class="step">
         <h2 data-l10n-id="feedback-respond">Respond to feedback</h2>
+        <section class="description">
+        <p data-l10n-id="feedback-discuss">You may have to discuss your solution of the bug with the maintainer of the project. Be open-minded (and nice)!</p>
+        <p data-l10n-id="feedback-test">In case you change something, don't forget to go back and test! In fact, you will have to repeat all the steps that follow after editing.</p>
+        </section><!-- END .description -->
         </section><!-- END .step -->
 
         <section class="step">
         <h2 data-l10n-id="sucess-accepted">Success! Maintainer accepts your change :)</h2>
+        <section class="description">
+        <p data-l10n-id="success-yay">Celebrate! And then move on to next bug... or find a project you want to implement!</p>
+        </section><!-- END .description -->
         </section><!-- END .step -->
 
         <script src="behavior.js" type="text/javascript"></script>
