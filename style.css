@@ -108,3 +108,7 @@ ul li {
   list-style-type: circle;
 }
 
+.command {
+   font-family: Courier New, Courier, monospace;
+  font-size: 80%;
+}
